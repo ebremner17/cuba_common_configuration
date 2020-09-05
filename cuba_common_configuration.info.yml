@@ -1,0 +1,9 @@
+name: 'Cuba common configuration'
+description: 'Common config for CUBA website'
+type: module
+core_version_requirement: ^9
+dependencies:
+  - language
+  - cuba_ct_conference_section
+  - cuba_media
+  - cuba_paragraphs

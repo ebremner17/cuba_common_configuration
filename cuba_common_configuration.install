@@ -1,0 +1,22 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall for Griffin Brothers Site Controller.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function cuba_common_configuration_install() {
+  \Drupal::service('theme_installer')->install(['cuba_theme']);
+  \Drupal::service('theme_installer')->install(['seven']);
+  \Drupal::configFactory()
+    ->getEditable('system.theme')
+    ->set('default', 'cuba_theme')
+    ->save();
+
+  $config = \Drupal::service('config.factory')->getEditable('system.theme');
+  $config->set('admin', 'seven')->save();
+  $config->set('use_admin_theme', 1)->save();
+}
