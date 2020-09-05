@@ -3,7 +3,11 @@ description: 'Common config for CUBA website'
 type: module
 core_version_requirement: ^9
 dependencies:
-  - language
+  - ckeditor
   - cuba_ct_conference_section
   - cuba_media
   - cuba_paragraphs
+  - editor
+  - filter
+  - language
+  - media
