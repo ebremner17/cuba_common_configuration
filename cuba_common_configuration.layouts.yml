@@ -1,0 +1,60 @@
+layout_cuba_twocol:
+  label: 'Two column 50-50'
+  path: layouts/cuba2col
+  template: layout--cuba2col
+  library: cuba_common_configuration/cuba2col
+  category: 'Columns: 2'
+  default_region: first
+  icon_map:
+    - [first, second]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
+layout_cuba_twocol_33_67:
+  label: 'Two column 33-67'
+  path: layouts/cuba2col-33-67
+  template: layout--cuba2col-33-67
+  library: cuba_common_configuration/cuba2col-33-67
+  category: 'Columns: 2'
+  default_region: first
+  icon_map:
+    - [first, second, second]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
+layout_cuba_threecol_33_34_33:
+  label: 'Three column 33-34-33'
+  path: layouts/cuba3col-33-34-33
+  template: layout--cuba3col-33-34-33
+  library: cuba_common_configuration/cuba3col-33-34-33
+  category: 'Columns: 3'
+  default_region: first
+  icon_map:
+    - [first, second, third]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third
+layout_cuba_threecol_25_50_25:
+  label: 'Three column 25-50-25'
+  path: layouts/cuba3col-25-50-25
+  template: layout--cuba3col-25-50-25
+  library: cuba_common_configuration/cuba3col-25-50-25
+  category: 'Columns: 3'
+  default_region: first
+  icon_map:
+    - [first, second, second, third]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
+    third:
+      label: Third

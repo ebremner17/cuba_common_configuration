@@ -1,0 +1,20 @@
+cuba2col:
+  version: 1.0
+  css:
+    theme:
+      layouts/cuba2col/cuba2col.css: {}
+cuba2col-33-67:
+  version: 1.0
+  css:
+    theme:
+      layouts/cuba2col-33-67/cuba2col-33-67.css: {}
+cuba3col-33-34-33:
+  version: 1.0
+  css:
+    theme:
+      layouts/cuba3col-33-34-33/cuba3col-33-34-33.css: {}
+cuba3col-25-50-25:
+  version: 1.0
+  css:
+    theme:
+      layouts/cuba3col-25-50-25/cuba3col-25-50-25.css: {}
