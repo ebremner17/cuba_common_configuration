@@ -5,8 +5,9 @@
 
 @media screen and (min-width: 48em) {
   .layout--cuba3col-33-34-335 {
-    grid-template-columns:  33% 34% 33%;
+    grid-template-columns: 33% 34% 33%;
   }
+}
 
 .layout--cuba3col-33-34-33 .layout__region--first {
   grid-column: 1 / 2;
