@@ -19,4 +19,11 @@ function cuba_common_configuration_install() {
   $config = \Drupal::service('config.factory')->getEditable('system.theme');
   $config->set('admin', 'seven')->save();
   $config->set('use_admin_theme', 1)->save();
+
+  $config = \Drupal::service('config.factory')->getEditable('language_switcher_extended.settings');
+
+  $config->set('mode', 'process_untranslated')->save();
+  $config->set('untranslated_handler', 1)->save();
+  $config->set('hide_single_link', 1)->save();
+  $config->set('hide_current_language', 1)->save();
 }
