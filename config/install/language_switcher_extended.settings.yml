@@ -1,0 +1,5 @@
+mode: process_untranslated
+untranslated_handler: hide_link
+hide_current_language: true
+hide_single_link: true
+show_langcode: false

@@ -10,4 +10,5 @@ dependencies:
   - editor
   - filter
   - language
+  - language_switcher_extended
   - media
