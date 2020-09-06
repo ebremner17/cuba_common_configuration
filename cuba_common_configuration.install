@@ -26,4 +26,6 @@ function cuba_common_configuration_install() {
   $config->set('untranslated_handler', 1)->save();
   $config->set('hide_single_link', 1)->save();
   $config->set('hide_current_language', 1)->save();
+
+  \Drupal::configFactory()->getEditable('node.settings')->set('use_admin_theme', TRUE)->save(TRUE);
 }
