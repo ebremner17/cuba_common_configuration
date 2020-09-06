@@ -12,3 +12,4 @@ dependencies:
   - language
   - language_switcher_extended
   - media
+  - twig_tweak
