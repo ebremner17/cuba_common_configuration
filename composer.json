@@ -1,0 +1,7 @@
+{
+  "name": "ebremner17/cuba_common_configuration",
+  "description": "Common controller for CUBA/ACCAU sites.",
+  "type": "drupal-custom-module",
+  "homepage": "https://github.com/ebremner17/cuba_common_configuration",
+  "keywords": ["Drupal"]
+}
