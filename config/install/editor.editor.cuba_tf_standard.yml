@@ -22,6 +22,10 @@ settings:
             - Subscript
             - Format
             - Styles
+            - JustifyLeft
+            - JustifyCenter
+            - JustifyRight
+            - JustifyBlock
         -
           name: Links
           items:
@@ -42,27 +46,17 @@ settings:
           items:
             - Source
             - Table
-        -
-          name: 'Text alignment'
-          items:
-            - JustifyLeft
-            - JustifyCenter
-            - JustifyRight
-            - JustifyBlock
-        -
-          name: Indent
-          items:
-            - Outdent
-            - Indent
-        -
-          name: Tools
-          items:
             - PasteFromWord
             - Paste
             - PasteText
             - Cut
             - Undo
             - Redo
+        -
+          name: Indent
+          items:
+            - Outdent
+            - Indent
   plugins:
     language:
       language_list: un
