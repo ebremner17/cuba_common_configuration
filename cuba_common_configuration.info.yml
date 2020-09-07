@@ -13,4 +13,5 @@ dependencies:
   - language
   - language_switcher_extended
   - media
+  - superfish
   - twig_tweak
