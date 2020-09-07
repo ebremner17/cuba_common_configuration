@@ -1,0 +1,10 @@
+<?php
+
+function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
+
+
+  if ($form_id == 'node_cuba_ct_web_page_form' || 'node_cuba_ct_web_page_edit_form') {
+    $form['#attached']['library'][] = 'cuba_theme/global-styling';
+  }
+
+}
