@@ -2,9 +2,18 @@
 
 function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
 
-
   if ($form_id == 'node_cuba_ct_web_page_form' || 'node_cuba_ct_web_page_edit_form') {
     $form['#attached']['library'][] = 'cuba_theme/global-styling';
   }
+}
 
+/**
+ * Implements hook_page_attachments().
+ */
+function cuba_common_configuration_page_attachments(array &$page) {
+  $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
+  if ($is_admin) {
+    $page['#attached']['library'][] = 'cuba_theme/admin-extras';
+    return;
+  }
 }
