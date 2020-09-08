@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cuba-menu-conferences
+label: Conferences
+description: 'Menus for CUBA/ACCAU conferences'
+locked: false
