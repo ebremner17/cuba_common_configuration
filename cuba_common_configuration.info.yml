@@ -4,6 +4,7 @@ type: module
 core_version_requirement: ^9
 dependencies:
   - ckeditor
+  - content_translation
   - cuba_ct_conference_section
   - cuba_ct_web_page
   - cuba_media
@@ -13,5 +14,7 @@ dependencies:
   - language
   - language_switcher_extended
   - media
+  - menu_link_content
   - superfish
+  - taxonomy_menu
   - twig_tweak

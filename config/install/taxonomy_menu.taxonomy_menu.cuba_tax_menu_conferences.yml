@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.cuba-menu-conferences
+    - taxonomy.vocabulary.cuba_voc_conference_name
+id: cuba_tax_menu_conferences
+label: Conferences
+vocabulary: cuba_voc_conference_name
+depth: 0
+menu: cuba-menu-conferences
+expanded: false
+menu_parent: 'cuba-menu-conferences:'
+description_field_name: null
+use_term_weight_order: true
