@@ -17,3 +17,22 @@ function cuba_common_configuration_page_attachments(array &$page) {
     return;
   }
 }
+
+/*
+ * Implements hook_preprocess_html().
+ */
+function cuba_common_configuration_preprocess_html(&$variables) {
+
+  // Get the current path.
+  $current_path = \Drupal::service('path.current')->getPath();
+
+  // Get the alias.
+  $path_alias = \Drupal::service('path_alias.manager')->getAliasByPath($current_path);
+
+  // Check if we are on a past and future conference page and add extra class.
+  if ($path_alias == '/past-and-future-conferences' || $path_alias == '/conferences-precedentes-et-futures') {
+
+    // Add extra class for styling.
+    $variables['attributes']['class'][] = 'past-and-future';
+  }
+}
