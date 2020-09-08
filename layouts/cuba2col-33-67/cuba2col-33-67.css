@@ -3,6 +3,14 @@
   grid-template-columns: 33% 67%;
 }
 
+.layout--cuba2col-33-67 .layout__region:first-child {
+  padding-right: 0.5rem;
+}
+
+.layout--cuba2col-33-67 .layout__region:nth-child(2) {
+  padding-left: 0.5rem;
+}
+
 .layout--cuba2col .layout__region--first {
   grid-column: 1 / 2;
 }
