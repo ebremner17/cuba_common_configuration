@@ -1,6 +1,21 @@
 .layout--cuba3col-33-34-33 {
   display: grid;
-  grid-template-columns: 33% 34% 33%;
+  grid-template-columns: 100%;
+}
+
+.layout--cuba3col-33-34-33 .layout__region--first {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.layout--cuba3col-33-34-33 .layout__region--second {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.layout--cuba3col-33-34-33 .layout__region--third {
+  grid-column: 1 / 2;
+  grid-row: 3 / 4;
 }
 
 @media screen and (min-width: 48em) {
@@ -9,14 +24,19 @@
   }
 }
 
-.layout--cuba3col-33-34-33 .layout__region--first {
-  grid-column: 1 / 2;
-}
+@media screen and (min-width: 48em) {
+  .layout--cuba3col-33-34-33 .layout__region--first {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
 
-.layout--cuba3col-33-34-33 .layout__region--second {
-  grid-column: 2 / 3;
-}
+  .layout--cuba3col-33-34-33 .layout__region--second {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
 
-.layout--cuba3col-33-34-33 .layout__region--third {
-  grid-column: 3 / 4;
+  .layout--cuba3col-33-34-33 .layout__region--third {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+  }
 }
