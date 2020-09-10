@@ -36,3 +36,46 @@ function cuba_common_configuration_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'past-and-future';
   }
 }
+
+/**
+ * Implements hook_theme().
+ */
+function cuba_common_configuration_theme($existing, $type, $theme, $path) {
+  return [
+    'cuba_management_links' => [
+      'variables' => [
+        'links' => NULL,
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_toolbar_alter().
+ */
+function cuba_common_configuration_toolbar_alter(&$items) {
+
+  // Move the 'Dashboards' link at the left of the tooltar.
+  $items['dashboards']['#weight'] = -15;
+
+  // Rename 'Dashboards' to 'Workbench'.
+  $items['dashboards']['tab']['#title'] = 'Workbench';
+
+  // Get the current user.
+  $current_user = \Drupal::currentUser();
+
+  // Ensure that we are not user 1.
+  if ($current_user->id() !== '1') {
+
+    // Load in the roles.
+    $roles = $current_user->getRoles();
+
+    // As long as not an administrator, remove the Manage link from the toolbar.
+    if (!in_array('administrator', $roles)) {
+
+      // Remove the manage link.
+      unset($items['administration']);
+    }
+  }
+}
+
