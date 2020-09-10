@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies: {  }
+id: cuba_my_dashboard
+admin_label: 'My dashboard'
+category: ''
+sections:
+  -
+    layout_id: layout_cuba_twocol_33_67
+    layout_settings:
+      label: ''
+    components:
+      3cf8e14c-e1c9-4b6c-823d-91e7d731a791:
+        uuid: 3cf8e14c-e1c9-4b6c-823d-91e7d731a791
+        region: second
+        configuration:
+          id: 'views_block:cuba_view_content_list-block_1'
+          label: ''
+          provider: views
+          label_display: '0'
+          views_label: ''
+          items_per_page: none
+          context_mapping: {  }
+        additional: {  }
+        weight: 0
+      33cc30ed-8d7e-4678-899c-998468d7043f:
+        uuid: 33cc30ed-8d7e-4678-899c-998468d7043f
+        region: first
+        configuration:
+          id: cuba_cbl_management_links
+          label: 'Management links'
+          provider: cuba_common_configuration
+          label_display: visible
+          context_mapping: {  }
+        additional: {  }
+        weight: 0
+    third_party_settings: {  }
+frontend: false
+weight: 0

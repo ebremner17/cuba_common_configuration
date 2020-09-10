@@ -3,6 +3,7 @@ description: 'Common config for CUBA website'
 type: module
 core_version_requirement: ^9
 dependencies:
+  - better_exposed_filters
   - block
   - ckeditor
   - content_translation
@@ -11,13 +12,18 @@ dependencies:
   - cuba_ct_web_page
   - cuba_media
   - cuba_paragraphs
+  - dashboards
   - editor
   - filter
   - language
   - language_switcher_extended
   - media
   - menu_link_content
+  - node
   - superfish
   - system
+  - taxonomy
   - taxonomy_menu
   - twig_tweak
+  - user
+  - views
