@@ -10,3 +10,7 @@
 .layout--cuba2col .layout__region--second {
   grid-column: 2 / 3;
 }
+
+.layout--cuba2col .layout__region {
+  padding: 0 1rem;
+}
