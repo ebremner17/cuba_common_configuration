@@ -40,7 +40,7 @@ settings:
           name: Media
           items:
             - Blockquote
-            - DrupalImage
+            - DrupalMediaLibrary
         -
           name: Tools
           items:

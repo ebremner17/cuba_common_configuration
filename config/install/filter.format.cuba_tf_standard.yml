@@ -1,6 +1,10 @@
 langcode: en
 status: true
-dependencies: {  }
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+  module:
+    - media
 name: Standard
 format: cuba_tf_standard
 weight: 0
@@ -11,7 +15,7 @@ filters:
     status: true
     weight: -10
     settings:
-      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <u> <s> <sup> <sub> <p class="text-align-left text-align-center text-align-right text-align-justify"> <img src alt data-entity-type data-entity-uuid> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr>'
+      allowed_html: '<a href hreflang> <em> <strong> <cite> <blockquote cite> <code> <ul type> <ol start type> <li> <dl> <dt> <dd> <h2 id> <h3 id> <h4 id> <h5 id> <h6 id> <u> <s> <sup> <sub> <p class="text-align-left text-align-center text-align-right text-align-justify"> <img src alt data-entity-type data-entity-uuid> <table> <caption> <tbody> <thead> <tfoot> <th> <td> <tr><drupal-media data-entity-type data-entity-uuid alt data-align data-caption>'
       filter_html_help: true
       filter_html_nofollow: false
   filter_htmlcorrector:
@@ -26,3 +30,15 @@ filters:
     status: true
     weight: 0
     settings: {  }
+  media_embed:
+    id: media_embed
+    provider: media
+    status: true
+    weight: 100
+    settings:
+      default_view_mode: default
+      allowed_media_types:
+        cuba_mt_file: cuba_mt_file
+        cuba_mt_image: cuba_mt_image
+      allowed_view_modes:
+        media_library: media_library
