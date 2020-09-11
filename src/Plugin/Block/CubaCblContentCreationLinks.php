@@ -9,14 +9,14 @@ use Drupal\Core\Url;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * CubaCblManagementLinks block.
+ * CubaCblContentCreationLinks block.
  *
  * @Block(
- *   id = "cuba_cbl_management_links",
- *   admin_label = @Translation("Management links"),
+ *   id = "cuba_cbl_content_creation_links",
+ *   admin_label = @Translation("Content links"),
  * )
  */
-class CubaCblManagementLinks extends BlockBase implements ContainerFactoryPluginInterface {
+class CubaCblContentCreationLinks extends BlockBase implements ContainerFactoryPluginInterface {
 
   /**
    * The entity type manager.
@@ -60,45 +60,33 @@ class CubaCblManagementLinks extends BlockBase implements ContainerFactoryPlugin
 
     $user = \Drupal::currentUser();
 
-    // Check if user can administer main menu items.
-    if ($user->hasPermission('administer main menu items')) {
+    // Check if user can create web pages.
+    if ($user->hasPermission('create cuba_ct_web_page content')) {
 
       // Create link to main menu.
-      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/structure/menu/manage/main')->toString();
+      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/node/add/cuba_ct_web_page')->toString();
 
       $links[] = [
         'link' => $link,
-        'title' => 'Manage main menu',
+        'title' => 'Add new web page',
       ];
     }
 
-    // Check if user can administer conference menu.
-    if ($user->hasPermission('administer cuba-menu-conferences menu items')) {
+    // Check if user can create conference sections.
+    if ($user->hasPermission('create cuba_ct_conference_section content')) {
 
       // Create link to conference menu.
-      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/structure/menu/manage/cuba-menu-conferences')->toString();
+      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/node/add/cuba_ct_conference_section')->toString();
 
       $links[] = [
         'link' => $link,
-        'title' => 'Manage conference menu',
-      ];
-    }
-
-    // Check if user can create and edit conference name terms.
-    if ($user->hasPermission('create terms in cuba_voc_conference_name') || $user->hasPermission('edit terms in cuba_voc_conference_name')) {
-
-      // Create link to conference taxonomy terms.
-      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/structure/taxonomy/manage/cuba_voc_conference_name/overview')->toString();
-
-      $links[] = [
-        'link' => $link,
-        'title' => 'Manage conference names',
+        'title' => 'Add new conference section',
       ];
     }
 
     // Set build array.
     $build = [
-      '#theme' => 'cuba_management_links',
+      '#theme' => 'cuba_content_creation_links',
       '#links' => $links,
     ];
 

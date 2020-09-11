@@ -12,7 +12,8 @@ function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
  */
 function cuba_common_configuration_page_attachments(array &$page) {
   $is_admin = \Drupal::service('router.admin_context')->isAdminRoute();
-  if ($is_admin) {
+  $current_path = \Drupal::service('path.current')->getPath();
+  if ($is_admin || $current_path == '/dashboard/cuba_my_dashboard') {
     $page['#attached']['library'][] = 'cuba_theme/admin-extras';
     return;
   }
@@ -43,6 +44,11 @@ function cuba_common_configuration_preprocess_html(&$variables) {
 function cuba_common_configuration_theme($existing, $type, $theme, $path) {
   return [
     'cuba_management_links' => [
+      'variables' => [
+        'links' => NULL,
+      ],
+    ],
+    'cuba_content_creation_links' => [
       'variables' => [
         'links' => NULL,
       ],
