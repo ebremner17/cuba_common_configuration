@@ -8,6 +8,11 @@ cuba2col-33-67:
   css:
     theme:
       layouts/cuba2col-33-67/cuba2col-33-67.css: {}
+cuba2col-67-33:
+  version: 1.0
+  css:
+    theme:
+      layouts/cuba2col-67-33/cuba2col-67-33.css: {}
 cuba3col-33-34-33:
   version: 1.0
   css:

@@ -26,6 +26,20 @@ layout_cuba_twocol_33_67:
       label: First
     second:
       label: Second
+layout_cuba_twocol_67_33:
+  label: 'Two column 67-33'
+  path: layouts/cuba2col-67-33
+  template: layout--cuba2col-67-33
+  library: cuba_common_configuration/cuba2col-67-33
+  category: 'Columns: 2'
+  default_region: first
+  icon_map:
+    - [first, first, second]
+  regions:
+    first:
+      label: First
+    second:
+      label: Second
 layout_cuba_threecol_33_34_33:
   label: 'Three column 33-34-33'
   path: layouts/cuba3col-33-34-33

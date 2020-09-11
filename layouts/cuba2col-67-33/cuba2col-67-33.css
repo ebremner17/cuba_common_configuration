@@ -1,0 +1,23 @@
+.layout--cuba2col-67-33 {
+  display: grid;
+  grid-template-columns: 100%;
+}
+
+@media screen and (min-width: 48em) {
+  .layout--cuba2col-67-33 {
+    display: grid;
+    grid-template-columns: 67% 33%;
+  }
+}
+
+.layout--cuba2col-67-33 .layout__region {
+  padding: 0 1rem;
+}
+
+.layout--cuba2col-67-33 .layout__region--first {
+  grid-column: 1 / 2;
+}
+
+.layout--cuba2col-67-33 .layout__region--second {
+  grid-column: 2 / 3;
+}
