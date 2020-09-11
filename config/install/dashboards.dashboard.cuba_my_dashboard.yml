@@ -6,31 +6,48 @@ admin_label: 'My dashboard'
 category: ''
 sections:
   -
-    layout_id: layout_cuba_twocol_33_67
+    layout_id: layout_cuba_twocol
     layout_settings:
       label: ''
     components:
-      3cf8e14c-e1c9-4b6c-823d-91e7d731a791:
-        uuid: 3cf8e14c-e1c9-4b6c-823d-91e7d731a791
-        region: second
-        configuration:
-          id: 'views_block:cuba_view_content_list-block_1'
-          label: ''
-          provider: views
-          label_display: '0'
-          views_label: ''
-          items_per_page: none
-          context_mapping: {  }
-        additional: {  }
-        weight: 0
-      33cc30ed-8d7e-4678-899c-998468d7043f:
-        uuid: 33cc30ed-8d7e-4678-899c-998468d7043f
+      cc2df40a-ebe7-4b50-95b5-0dd46226b41c:
+        uuid: cc2df40a-ebe7-4b50-95b5-0dd46226b41c
         region: first
         configuration:
           id: cuba_cbl_management_links
           label: 'Management links'
           provider: cuba_common_configuration
           label_display: visible
+          context_mapping: {  }
+        additional: {  }
+        weight: 0
+      ce25d2e2-d447-4273-8303-12f3acaa2631:
+        uuid: ce25d2e2-d447-4273-8303-12f3acaa2631
+        region: second
+        configuration:
+          id: cuba_cbl_content_creation_links
+          label: 'Content links'
+          provider: cuba_common_configuration
+          label_display: visible
+          context_mapping: {  }
+        additional: {  }
+        weight: 0
+    third_party_settings: {  }
+  -
+    layout_id: layout_onecol
+    layout_settings:
+      label: ''
+    components:
+      3cf8e14c-e1c9-4b6c-823d-91e7d731a791:
+        uuid: 3cf8e14c-e1c9-4b6c-823d-91e7d731a791
+        region: content
+        configuration:
+          id: 'views_block:cuba_view_content_list-block_1'
+          label: ''
+          provider: views
+          label_display: visible
+          views_label: ''
+          items_per_page: none
           context_mapping: {  }
         additional: {  }
         weight: 0

@@ -18,8 +18,8 @@ dependencies:
   - language
   - language_switcher_extended
   - media
-  - menu_link_content
   - menu_admin_per_menu
+  - menu_link_content
   - node
   - superfish
   - system
