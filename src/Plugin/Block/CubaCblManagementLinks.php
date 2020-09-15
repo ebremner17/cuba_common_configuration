@@ -96,6 +96,18 @@ class CubaCblManagementLinks extends BlockBase implements ContainerFactoryPlugin
       ];
     }
 
+    // Check if user can create and edit conference name terms.
+    if ($user->hasPermission('administer users')) {
+
+      // Create link to conference taxonomy terms.
+      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/people')->toString();
+
+      $links[] = [
+        'link' => $link,
+        'title' => 'Manage users',
+      ];
+    }
+
     // Set build array.
     $build = [
       '#theme' => 'cuba_management_links',
