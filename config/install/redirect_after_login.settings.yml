@@ -1,0 +1,6 @@
+login_redirection:
+  anonymous: null
+  authenticated: /
+  cuba_role_site_manager: /dashboard/cuba_my_dashboard
+  cuba_role_content_editor: /dashboard/cuba_my_dashboard
+exclude_urls: ''
