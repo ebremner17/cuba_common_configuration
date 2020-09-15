@@ -37,8 +37,8 @@ filters:
     weight: 100
     settings:
       default_view_mode: default
+      allowed_view_modes:
+        media_library: media_library
       allowed_media_types:
         cuba_mt_file: cuba_mt_file
         cuba_mt_image: cuba_mt_image
-      allowed_view_modes:
-        media_library: media_library
