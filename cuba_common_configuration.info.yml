@@ -21,6 +21,7 @@ dependencies:
   - menu_admin_per_menu
   - menu_link_content
   - node
+  - redirect_after_login
   - superfish
   - system
   - taxonomy
