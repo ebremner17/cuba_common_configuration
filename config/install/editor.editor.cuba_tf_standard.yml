@@ -5,6 +5,14 @@ dependencies:
     - filter.format.cuba_tf_standard
   module:
     - ckeditor
+    - editor_file
+third_party_settings:
+  editor_file:
+    status: true
+    scheme: public
+    directory: inline-files
+    extensions: 'txt docx doc ppt pptx pdf'
+    max_size: ''
 format: cuba_tf_standard
 editor: ckeditor
 settings:
@@ -40,7 +48,7 @@ settings:
           name: Media
           items:
             - Blockquote
-            - DrupalMediaLibrary
+            - DrupalFile
         -
           name: Tools
           items:
