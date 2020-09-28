@@ -1,9 +1,19 @@
 <?php
 
+/**
+ * Implements hook_form_alter().
+ */
 function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
 
+  // If we are on a web page node edit, then add global-stylings so that paragraphs are viewable.
   if ($form_id == 'node_cuba_ct_web_page_form' || 'node_cuba_ct_web_page_edit_form') {
     $form['#attached']['library'][] = 'cuba_theme/global-styling';
+  }
+
+  // If we are on a search form then unset the types of searches and languages.
+  if ($form_id == 'search_form') {
+    unset($form['advanced']['types-fieldset']);
+    unset($form['advanced']['lang-fieldset']);
   }
 }
 
@@ -85,3 +95,12 @@ function cuba_common_configuration_toolbar_alter(&$items) {
   }
 }
 
+/**
+ * Implements hook_query_search_node_search_alter().
+ *
+ * Ensure that the search is only in the users current language.
+ */
+function cuba_common_configuration_query_search_node_search_alter(&$query) {
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+  $query->condition('i.langcode', array($language, 'und', 'zxx'), 'IN');
+}
