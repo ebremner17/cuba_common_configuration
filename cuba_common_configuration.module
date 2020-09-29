@@ -15,6 +15,10 @@ function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
     unset($form['advanced']['types-fieldset']);
     unset($form['advanced']['lang-fieldset']);
   }
+
+  if ($form_id == 'node_cuba_ct_conference_section_form') {
+    unset($form['langcode']);
+  }
 }
 
 /**
@@ -46,6 +50,26 @@ function cuba_common_configuration_preprocess_html(&$variables) {
     // Add extra class for styling.
     $variables['attributes']['class'][] = 'past-and-future';
   }
+
+  $user_roles = \Drupal::currentUser()->getRoles();
+  $allowed_roles = ['cuba_role_site_manager', 'cuba_role_content_editor'];
+
+  foreach ($user_roles as $user_role) {
+    if (in_array($user_role, $allowed_roles)) {
+      $language =  \Drupal::languageManager()->getCurrentLanguage()->getName();
+      if ($language == 'Francais') {
+        $variables['attributes']['class'][] = 'french';
+      }
+      else if ($language == 'English') {
+        $variables['attributes']['class'][] = 'english';
+      }
+    }
+  }
+  /*
+  if ($user->id() == 1 && $language == 'Francais') {
+    $variables['attributes']['class'][] = 'french';
+  }
+  */
 }
 
 /**
