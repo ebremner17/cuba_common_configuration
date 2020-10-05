@@ -26,3 +26,10 @@ cuba_common_configuration.cuba_clone_conference_4:
     _title: 'Clone Conference - Choose Clone to Conference'
   requirements:
     _permission: 'access content'
+cuba_common_configuration.cuba_clone_conference_5:
+  path: '/admin/clone_conference/5'
+  defaults:
+    _form: '\Drupal\cuba_common_configuration\Form\CubaCloneConferenceMultiStep5'
+    _title: 'Clone Conference - Choose Clone to Conference'
+  requirements:
+    _permission: 'access content'

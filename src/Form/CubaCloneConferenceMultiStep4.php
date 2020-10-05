@@ -77,6 +77,6 @@ class CubaCloneConferenceMultiStep4 extends CubaCloneConferenceMultiStepBase {
 
     // Save the data
     parent::saveData();
-    $form_state->setRedirect('cuba_common_configuration.cuba_clone_conference_4');
+    $form_state->setRedirect('cuba_common_configuration.cuba_clone_conference_5');
   }
 }
