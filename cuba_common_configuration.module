@@ -51,25 +51,47 @@ function cuba_common_configuration_preprocess_html(&$variables) {
     $variables['attributes']['class'][] = 'past-and-future';
   }
 
-  $user_roles = \Drupal::currentUser()->getRoles();
-  $allowed_roles = ['cuba_role_site_manager', 'cuba_role_content_editor'];
+  // If we are user 1, add the language class.
+  if (\Drupal::currentUser()->id() == 1) {
 
-  foreach ($user_roles as $user_role) {
-    if (in_array($user_role, $allowed_roles)) {
-      $language =  \Drupal::languageManager()->getCurrentLanguage()->getName();
-      if ($language == 'Francais') {
-        $variables['attributes']['class'][] = 'french';
-      }
-      else if ($language == 'English') {
-        $variables['attributes']['class'][] = 'english';
+    // Get the current language.
+    $language =  \Drupal::languageManager()->getCurrentLanguage()->getName();
+
+    // Set the language as a CSS class in the body.
+    if ($language == 'Francais') {
+      $variables['attributes']['class'][] = 'french';
+    }
+    else if ($language == 'English') {
+      $variables['attributes']['class'][] = 'english';
+    }
+  }
+  // Not user 1, so check for roles and then add CSS class.
+  else {
+
+    // Get the role of the current user.
+    $user_roles = \Drupal::currentUser()->getRoles();
+
+    // Set the allowed roles.
+    $allowed_roles = ['cuba_role_site_manager', 'cuba_role_content_editor'];
+
+    // Step through each user role and see if we add the language class.
+    foreach ($user_roles as $user_role) {
+
+      // If the user role is in the allowed roles, add the language class.
+      if (in_array($user_role, $allowed_roles)) {
+
+        // Get the current language.
+        $language = \Drupal::languageManager()->getCurrentLanguage()->getName();
+
+        // Set the language as a CSS class in the body.
+        if ($language == 'Francais') {
+          $variables['attributes']['class'][] = 'french';
+        } else if ($language == 'English') {
+          $variables['attributes']['class'][] = 'english';
+        }
       }
     }
   }
-  /*
-  if ($user->id() == 1 && $language == 'Francais') {
-    $variables['attributes']['class'][] = 'french';
-  }
-  */
 }
 
 /**
