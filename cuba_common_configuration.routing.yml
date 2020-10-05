@@ -1,0 +1,28 @@
+cuba_common_configuration.cuba_clone_conference_1:
+  path: '/admin/clone_conference/1'
+  defaults:
+    _form: '\Drupal\cuba_common_configuration\Form\CubaCloneConferenceMultiStep1'
+    _title: 'Clone Conference - Choose From Conference'
+  requirements:
+    _permission: 'access content'
+cuba_common_configuration.cuba_clone_conference_2:
+  path: '/admin/clone_conference/2'
+  defaults:
+    _form: '\Drupal\cuba_common_configuration\Form\CubaCloneConferenceMultiStep2'
+    _title: 'Clone Conference - Choose Conference Sections'
+  requirements:
+    _permission: 'access content'
+cuba_common_configuration.cuba_clone_conference_3:
+  path: '/admin/clone_conference/3'
+  defaults:
+    _form: '\Drupal\cuba_common_configuration\Form\CubaCloneConferenceMultiStep3'
+    _title: 'Clone Conference - Choose Clone to Conference'
+  requirements:
+    _permission: 'access content'
+cuba_common_configuration.cuba_clone_conference_4:
+  path: '/admin/clone_conference/4'
+  defaults:
+    _form: '\Drupal\cuba_common_configuration\Form\CubaCloneConferenceMultiStep4'
+    _title: 'Clone Conference - Choose Clone to Conference'
+  requirements:
+    _permission: 'access content'
