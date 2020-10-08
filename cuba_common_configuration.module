@@ -1,5 +1,8 @@
 <?php
 
+use Drupal\menu_link_content\Entity\MenuLinkContent;
+use Drupal\node\Entity\Node;
+
 /**
  * Implements hook_form_alter().
  */
@@ -149,4 +152,54 @@ function cuba_common_configuration_toolbar_alter(&$items) {
 function cuba_common_configuration_query_search_node_search_alter(&$query) {
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $query->condition('i.langcode', array($language, 'und', 'zxx'), 'IN');
+}
+
+/**
+ * Helper function to clone nodes during a batch process.
+ *
+ * @param $clone_info
+ * @param $operation_details
+ * @param $context
+ * @throws \Drupal\Core\Entity\EntityStorageException
+ */
+function cuba_common_configuration_clone_nodes($clone_info, $operation_details, &$context) {
+
+  // Load the node to be cloned.
+  $node = Node::load($clone_info['nid']);
+
+  // Duplicate the node.
+  $nodeDuplicate = $node->createDuplicate();
+
+  // Step through each of the fields in the duplicated node and duplicate that field.
+  foreach ($nodeDuplicate->field_cuba_cs_section as $field) {
+    $field->entity = $field->entity->createDuplicate();
+  }
+
+  // Set the conference name field to the conference to be cloned to.
+  $nodeDuplicate->field_cuba_cs_conference_name->target_id = $clone_info['to_conference'];
+
+  // Save the duplicated node.
+  $nodeDuplicate->save();
+
+  // Setup the menu link for the node.
+  $menu_link = MenuLinkContent::create(array(
+    'title' => $nodeDuplicate->getTitle(),
+    'link' => ['uri' => 'entity:node/' . $nodeDuplicate->id()],
+    'menu_name' => 'cuba-menu-conferences',
+    'weight' => 0,
+    'parent' => 'taxonomy_menu.menu_link:taxonomy_menu.menu_link.cuba_tax_menu_conferences.' . $clone_info['to_conference'],
+  ));
+
+  // Save the menu link.
+  $menu_link->save();
+
+  // Store some results for post-processing in the 'finished' callback.
+  // The contents of 'results' will be available as $results in the
+  // 'finished' function (in this example, batch_example_finished()).
+  $context['results'][] = $clone_info;
+
+  // Optional message displayed under the progressbar.
+  $context['message'] = t('Running Batch "@id" @details',
+    ['@id' => $clone_info['id'], '@details' => $operation_details]
+  );
 }

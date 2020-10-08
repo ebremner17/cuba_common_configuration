@@ -73,10 +73,59 @@ class CubaCloneConferenceMultiStep4 extends CubaCloneConferenceMultiStepBase {
    * {@inheritdoc}
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
-    $this->store->set('to_conference', $form_state->getValue('to_conference'));
+    //$this->store->set('to_conference', $form_state->getValue('to_conference'));
 
-    // Save the data
-    parent::saveData();
-    $form_state->setRedirect('cuba_common_configuration.cuba_clone_conference_5');
+    // Step through each of the conference sections and get the values.
+    foreach ($this->store->get('conference_sections_to_clone') as $cstbc) {
+      if ($cstbc !== 0) {
+        $nids[] = $cstbc;
+      }
+    }
+
+    // Setup the operations array.
+    $operations = [];
+
+    // The counter for the id of the operation.
+    $counter = 1;
+
+    // Step through each of the nodes to be cloned and setup the operations.
+    foreach ($nids as $nid) {
+
+      // The info required for each clone.
+      $clone_info['nid'] = $nid;
+      $clone_info['to_conference'] = $this->store->get('to_conference');
+      $clone_info['id'] = $counter;
+
+      // The operation to be performed.
+      $operations[] = [
+        'cuba_common_configuration_clone_nodes',
+        [
+          $clone_info,
+          $this->t('(Operation @operation)', ['@operation' => $counter]),
+        ],
+      ];
+
+      // Increment the counter so we have an id for the operation.
+      $counter++;
+    }
+
+    // Setup the batch operation.
+    $batch = [
+      'title' => $this->t('Cloning @num conference section(s)', ['@num' => count($nids)]),
+      'operations' => $operations,
+      'finished' => '\Drupal\cuba_common_configure\Batch\CubaCloneConferenceBatch::cloneNodeFinishedCallback'
+    ];
+
+    // Run the batch.
+    batch_set($batch);
+
+    // Setup URL to direct user back to dashboard.
+    $url = Url::fromUri('internal:/dashboard/cuba_my_dashboard');
+
+    // Delete all the values of the form.
+    $this->deleteStore();
+
+    // Set the form redirect to the dashboard.
+    $form_state->setRedirectUrl($url);
   }
 }

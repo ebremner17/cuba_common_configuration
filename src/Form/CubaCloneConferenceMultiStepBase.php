@@ -99,10 +99,10 @@ abstract class CubaCloneConferenceMultiStepBase extends FormBase {
    * Saves the data from the multistep form.
    */
   protected function saveData() {
-    // Logic for saving data goes here...
-    $this->deleteStore();
-    $this->messenger->addMessage('The form has been saved.');
 
+    // Logic for saving data goes here...
+    //$this->deleteStore();
+    $this->messenger->addMessage('The form has been saved.');
   }
 
   /**
@@ -110,7 +110,11 @@ abstract class CubaCloneConferenceMultiStepBase extends FormBase {
    * the multistep form.
    */
   protected function deleteStore() {
-    $keys = ['name', 'email', 'age', 'location'];
+
+    // Keys to be deleted.
+    $keys = ['from_conference', 'conference_sections_to_clone', 'to_conference'];
+
+    // Step through each key and delete them.
     foreach ($keys as $key) {
       $this->store->delete($key);
     }
@@ -124,7 +128,11 @@ abstract class CubaCloneConferenceMultiStepBase extends FormBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function getConferenceNames() {
+
+    // Load in all the terms (conference names).
     $terms = $this->entityTypeManager->getStorage("taxonomy_term")->loadTree('cuba_voc_conference_name', $parent = 0, $max_depth = NULL, $load_entities = FALSE);
+
+    // Step through each of the terms and setup array with tid and name.
     foreach ($terms as $term) {
       $cuba_terms[] = [
         'tid' => $term->tid,
@@ -132,6 +140,7 @@ abstract class CubaCloneConferenceMultiStepBase extends FormBase {
       ];
     }
 
+    // Return the conference names.
     return $cuba_terms;
   }
 
@@ -144,7 +153,11 @@ abstract class CubaCloneConferenceMultiStepBase extends FormBase {
    * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
    */
   public function getConferenceName(int $tid) {
+
+    // Get the term.
     $term = $this->entityTypeManager->getStorage('taxonomy_term')->load($tid);
+
+    // Return the term name.
     return $term->name->value;
   }
 
@@ -165,7 +178,7 @@ abstract class CubaCloneConferenceMultiStepBase extends FormBase {
 
     // Step through each node and load it, get the nid and title.
     foreach ($nids as $nid) {
-      $node = \Drupal\node\Entity\Node::load($nid);
+      $node = $this->entityTypeManager->getStorage('node')->load($nid);
       $nodes[] = [
         'nid' => $nid,
         'title' => $node->getTitle(),
@@ -187,16 +200,7 @@ abstract class CubaCloneConferenceMultiStepBase extends FormBase {
     if (count($nids) > 0) {
       $html = '<ul>';
       foreach ($nids as $nid) {
-        $node = \Drupal\node\Entity\Node::load($nid);
-        $nodeDuplicate = $node->createDuplicate();
-
-        foreach ($nodeDuplicate->field_cuba_cs_section as $field) {
-          $field->entity = $field->entity->createDuplicate();
-        }
-        $nodeDuplicate->setTitle('CLONED');
-        //$nodeDuplicate->save();
-        //$translated_node = $node->getTranslation('fr');
-
+        $node = $this->entityTypeManager->getStorage('node')->load($nid);
         $html .= '<li>' . $node->getTitle() . '</li>';
       }
       $html .= '</ul>';
