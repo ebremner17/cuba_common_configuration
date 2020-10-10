@@ -84,6 +84,18 @@ class CubaCblContentCreationLinks extends BlockBase implements ContainerFactoryP
       ];
     }
 
+    // Check if user can create clone conferences.
+    if ($user->hasPermission('clone cuba conferences')) {
+
+      // Create link to conference menu.
+      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/clone_conference/1')->toString();
+
+      $links[] = [
+        'link' => $link,
+        'title' => 'Clone a conference',
+      ];
+    }
+
     // Set build array.
     $build = [
       '#theme' => 'cuba_content_creation_links',
