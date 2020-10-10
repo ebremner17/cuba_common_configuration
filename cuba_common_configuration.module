@@ -178,8 +178,29 @@ function cuba_common_configuration_clone_nodes($clone_info, $operation_details, 
   // Set the conference name field to the conference to be cloned to.
   $nodeDuplicate->field_cuba_cs_conference_name->target_id = $clone_info['to_conference'];
 
+  // Set the status to unpublished.
+  $nodeDuplicate->status = 0;
+
+  // Set creation time, so it shows up later in the content list.
+  $nodeDuplicate->created = time();
+
   // Save the duplicated node.
   $nodeDuplicate->save();
+
+  // Get the translation of the node.
+  $node_translation = $nodeDuplicate->getTranslation('fr');
+
+  // Set the new conference name.
+  $node_translation->field_cuba_cs_conference_name->target_id = $clone_info['to_conference'];
+
+  // Set the status to unpublished.
+  $node_translation->status = 0;
+
+  // Set the creation time to now, so that it appears first in the content list.
+  $node_translation->created = time();
+
+  // Save the node translation.
+  $node_translation->save();
 
   // Setup the menu link for the node.
   $menu_link = MenuLinkContent::create(array(
@@ -192,6 +213,18 @@ function cuba_common_configuration_clone_nodes($clone_info, $operation_details, 
 
   // Save the menu link.
   $menu_link->save();
+
+  // Add a translation for the menu link.
+  $menu_link->addTranslation('fr');
+
+  // Get the translation for the menu link.
+  $menu_link_translation = $menu_link->getTranslation('fr');
+
+  // Set the title of the menu link translation.
+  $menu_link_translation->title = $node_translation->getTitle();
+
+  // Save the menu link translation.
+  $menu_link_translation->save();
 
   // Store some results for post-processing in the 'finished' callback.
   // The contents of 'results' will be available as $results in the
