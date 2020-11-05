@@ -1,0 +1,16 @@
+{{ attach_library('cuba_theme/conference-menu') }}
+
+<div class="cuba-conference-menu">
+  {% for menu_name, conf_menu in conf_menus %}
+    <button class="cuba-accordion{% if conf_menu.active == true %} active{% endif %}">{{ menu_name }}</button>
+    <nav class="cuba-panel">
+      <ul class="cuba-conf-menu-list">
+        {% for subtree in conf_menu.subtree %}
+          <li class="cuba-conf-menu-item">
+            <a href="{{ subtree.url }}" class="cuba-conf-menu-link {% if subtree.active %}active{% endif %}">{{ subtree.title }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  {% endfor %}
+</div>

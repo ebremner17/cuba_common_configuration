@@ -112,6 +112,11 @@ function cuba_common_configuration_theme($existing, $type, $theme, $path) {
         'links' => NULL,
       ],
     ],
+    'cuba_conference_menu' => [
+      'variables' => [
+        'conf_menus' => NULL,
+      ],
+    ],
   ];
 }
 
