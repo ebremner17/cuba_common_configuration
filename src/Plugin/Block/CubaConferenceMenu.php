@@ -121,20 +121,11 @@ class CubaConferenceMenu extends BlockBase implements ContainerFactoryPluginInte
         // Step through each of the subtrees (children) and get values.
         foreach ($tree->subtree as $subtree) {
 
-          // Options for getting the URL.
-          $options = ['absolute' => FALSE];
-
-          // Get the plugin values for the menu link.
-          $subtree_plugin = $subtree->link->pluginDefinition;
-
-          // Get the URL object to be displayed.
-          $url_object = Url::fromRoute('entity.node.canonical', ['node' => $subtree_plugin['route_parameters']['node']], $options);
-
           // Setup the variables for the menu link.
           $conf_menus[$title]['subtree'][] = [
-            'active' => $nid == $subtree_plugin['route_parameters']['node'] ? TRUE : FALSE,
-            'title' => $subtree_plugin['title'],
-            'url' => $url_object,
+            'active' => $nid == $subtree->link->pluginDefinition['route_parameters']['node'] ? TRUE : FALSE,
+            'title' => $subtree->link->getTitle(),
+            'url' => $subtree->link->getUrlObject(),
           ];
         }
       }
@@ -143,7 +134,7 @@ class CubaConferenceMenu extends BlockBase implements ContainerFactoryPluginInte
     // Return the themed array.
     return [
       '#theme' => 'cuba_conference_menu',
-      '#conf_menus' => $conf_menus,
+      '#conf_menus' => isset($conf_menus) ? $conf_menus: NULL,
     ];
   }
 }

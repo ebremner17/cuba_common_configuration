@@ -9,7 +9,7 @@ use Drupal\node\Entity\Node;
 function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
 
   // If we are on a web page node edit, then add global-stylings so that paragraphs are viewable.
-  if ($form_id == 'node_cuba_ct_web_page_form' || 'node_cuba_ct_web_page_edit_form') {
+  if ($form_id == 'node_cuba_ct_web_page_form' || $form_id == 'node_cuba_ct_web_page_edit_form') {
     $form['#attached']['library'][] = 'cuba_theme/global-styling';
   }
 
@@ -21,6 +21,11 @@ function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
 
   if ($form_id == 'node_cuba_ct_conference_section_form') {
     unset($form['langcode']);
+  }
+
+  // If on the board of directors form add description to title for full name.
+  if ($form_id == 'node_cuba_ct_board_of_directors_form' || $form_id == 'node_cuba_ct_board_of_directors_form') {
+    $form['title']['widget'][0]['value']['#description'] =  \Drupal\Core\Field\FieldFilteredMarkup::create('Enter the full name of the board member.');
   }
 }
 
@@ -34,6 +39,13 @@ function cuba_common_configuration_page_attachments(array &$page) {
     $page['#attached']['library'][] = 'cuba_theme/admin-extras';
     return;
   }
+}
+
+/**
+ * Implements hook_preprocess_view().
+ */
+function cuba_common_configuration_preprocess_views_view_unformatted(&$variables) {
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getName();
 }
 
 /*
