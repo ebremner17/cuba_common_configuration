@@ -8,6 +8,7 @@ dependencies:
   - ckeditor
   - content_translation
   - ctools
+  - cuba_ct_board_of_directors
   - cuba_ct_conference_section
   - cuba_ct_web_page
   - cuba_media
@@ -15,6 +16,7 @@ dependencies:
   - dashboards
   - editor
   - editor_file
+  - field_value
   - filter
   - language
   - language_switcher_extended
