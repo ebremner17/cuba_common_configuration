@@ -16,7 +16,6 @@ dependencies:
   - dashboards
   - editor
   - editor_file
-  - field_value
   - filter
   - language
   - language_switcher_extended
@@ -31,6 +30,7 @@ dependencies:
   - system
   - taxonomy
   - taxonomy_menu
+  - twif_field_value
   - twig_tweak
   - user
   - views
