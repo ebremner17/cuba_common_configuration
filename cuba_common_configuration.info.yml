@@ -30,7 +30,7 @@ dependencies:
   - system
   - taxonomy
   - taxonomy_menu
-  - twif_field_value
+  - twig_field_value
   - twig_tweak
   - user
   - views
