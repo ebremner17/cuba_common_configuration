@@ -84,15 +84,27 @@ class CubaCblManagementLinks extends BlockBase implements ContainerFactoryPlugin
       ];
     }
 
-    // Check if user can create and edit conference name terms.
-    if ($user->hasPermission('create terms in cuba_voc_conference_name') || $user->hasPermission('edit terms in cuba_voc_conference_name')) {
+    // Check if user can create board of directors content type.
+    if ($user->hasPermission('create cuba_ct_board_of_directors content')) {
 
-      // Create link to conference taxonomy terms.
+      // Create link to manage board of directors order.
       $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/structure/taxonomy/manage/cuba_voc_conference_name/overview')->toString();
 
       $links[] = [
         'link' => $link,
         'title' => 'Manage conference names',
+      ];
+    }
+
+    // Check if user can create and edit conference name terms.
+    if ($user->hasPermission('create terms in cuba_voc_conference_name') || $user->hasPermission('edit terms in cuba_voc_conference_name')) {
+
+      // Create link to conference taxonomy terms.
+      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/board-of-directors/order')->toString();
+
+      $links[] = [
+        'link' => $link,
+        'title' => 'Manage board of directors order',
       ];
     }
 
