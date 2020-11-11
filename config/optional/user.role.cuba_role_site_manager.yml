@@ -75,6 +75,7 @@ permissions:
   - 'revert cuba_ct_web_page revisions'
   - 'search content'
   - 'translate any entity'
+  - 'translate cuba_ct_board_of_directors node'
   - 'translate cuba_ct_conference_section node'
   - 'translate cuba_ct_web_page node'
   - 'translate cuba_voc_conference_name taxonomy_term'
