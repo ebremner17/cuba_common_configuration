@@ -20,6 +20,7 @@ permissions:
   - 'assign cuba_role_site_manager role'
   - 'can view cuba_my_dashboard dashboard'
   - 'change own username'
+  - 'clone cuba conferences'
   - 'create board_of_directors media'
   - 'create content translations'
   - 'create cuba_ct_board_of_directors content'
