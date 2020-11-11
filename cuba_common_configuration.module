@@ -19,8 +19,24 @@ function cuba_common_configuration_form_alter(&$form, &$form_state, $form_id) {
     unset($form['advanced']['lang-fieldset']);
   }
 
+  // If we are on the conference section, remove the language code element.
   if ($form_id == 'node_cuba_ct_conference_section_form') {
     unset($form['langcode']);
+  }
+
+  // The forms that we need to allow the published checkbox.
+  $status_forms[] = 'node_cuba_ct_web_page_form';
+  $status_forms[] = 'node_cuba_ct_web_page_edit_form';
+  $status_forms[] = 'node_cuba_ct_conference_section_form';
+  $status_forms[] = 'node_cuba_ct_conference_section_edit_form';
+  $status_forms[] = 'node_cuba_ct_board_of_directors_form';
+  $status_forms[] = 'node_cuba_ct_board_of_directors_edit_form';
+
+  // If the form is should have the ability to have the publish checkbox, add it.
+  if (in_array($form_id, $status_forms)) {
+
+    // Ensure that the publish checkbox shows on the form.
+    $form['status']['#access'] = true;
   }
 
   // If on the board of directors form add description to title for full name.
