@@ -242,6 +242,7 @@ function cuba_common_configuration_clone_nodes($clone_info, $operation_details, 
     'menu_name' => 'cuba-menu-conferences',
     'weight' => 0,
     'parent' => 'taxonomy_menu.menu_link:taxonomy_menu.menu_link.cuba_tax_menu_conferences.' . $clone_info['to_conference'],
+    'enabled' => 0,
   ));
 
   // Save the menu link.
