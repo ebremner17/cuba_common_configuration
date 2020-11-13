@@ -131,10 +131,22 @@ class CubaConferenceMenu extends BlockBase implements ContainerFactoryPluginInte
       }
     }
 
+    \Drupal::service('page_cache_kill_switch')->trigger();
+
     // Return the themed array.
     return [
       '#theme' => 'cuba_conference_menu',
       '#conf_menus' => isset($conf_menus) ? $conf_menus: NULL,
+      '#cache' => [
+        'max-age' => 0,
+      ],
     ];
+  }
+
+  /**
+   * @return int
+   */
+  public function getCacheMaxAge() {
+    return 0;
   }
 }
