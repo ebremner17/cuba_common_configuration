@@ -235,6 +235,7 @@ function cuba_common_configuration_clone_nodes($clone_info, $operation_details, 
   // Save the node translation.
   $node_translation->save();
 
+  /*
   // Setup the menu link for the node.
   $menu_link = MenuLinkContent::create(array(
     'title' => $nodeDuplicate->getTitle(),
@@ -259,6 +260,7 @@ function cuba_common_configuration_clone_nodes($clone_info, $operation_details, 
 
   // Save the menu link translation.
   $menu_link_translation->save();
+  */
 
   // Store some results for post-processing in the 'finished' callback.
   // The contents of 'results' will be available as $results in the
