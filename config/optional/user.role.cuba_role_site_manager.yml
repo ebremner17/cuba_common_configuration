@@ -8,6 +8,7 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access contextual links'
+  - 'access draggableviews'
   - 'access media overview'
   - 'access taxonomy overview'
   - 'access toolbar'
@@ -18,6 +19,7 @@ permissions:
   - 'administer users'
   - 'assign cuba_role_content_editor role'
   - 'assign cuba_role_site_manager role'
+  - 'bypass node access'
   - 'can view cuba_my_dashboard dashboard'
   - 'change own username'
   - 'clone cuba conferences'

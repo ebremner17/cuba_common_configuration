@@ -8,12 +8,12 @@ is_admin: null
 permissions:
   - 'access administration pages'
   - 'access contextual links'
+  - 'access draggableviews'
   - 'access taxonomy overview'
   - 'access toolbar'
   - 'administer cuba-menu-conferences menu items'
   - 'administer main menu items'
   - 'can view cuba_my_dashboard dashboard'
-  - 'clone cuba conferences'
   - 'create board_of_directors media'
   - 'create content translations'
   - 'create cuba_ct_board_of_directors content'
