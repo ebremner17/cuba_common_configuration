@@ -157,7 +157,7 @@ function cuba_common_configuration_toolbar_alter(&$items) {
   $items['dashboards']['#weight'] = -15;
 
   // Rename 'Dashboards' to 'Workbench'.
-  $items['dashboards']['tab']['#title'] = 'Workbench';
+  $items['dashboards']['tab']['#title'] = 'Dashboard';
 
   // Get the current user.
   $current_user = \Drupal::currentUser();
