@@ -109,6 +109,18 @@ class CubaCblManagementLinks extends BlockBase implements ContainerFactoryPlugin
     }
 
     // Check if user can create and edit conference name terms.
+    if ($user->hasPermission('access files overview')) {
+
+      // Create link to conference taxonomy terms.
+      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/admin/cuba/files-list')->toString();
+
+      $links[] = [
+        'link' => $link,
+        'title' => 'Manage files',
+      ];
+    }
+
+    // Check if user can create and edit conference name terms.
     if ($user->hasPermission('administer users')) {
 
       // Create link to conference taxonomy terms.
