@@ -16,6 +16,7 @@ dependencies:
   - dashboards
   - editor
   - editor_file
+  - file
   - filter
   - language
   - language_switcher_extended
@@ -34,3 +35,4 @@ dependencies:
   - twig_tweak
   - user
   - views
+  - views_bulk_operations
