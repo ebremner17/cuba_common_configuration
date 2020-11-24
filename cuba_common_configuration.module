@@ -64,6 +64,13 @@ function cuba_common_configuration_preprocess_views_view_unformatted(&$variables
   $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getName();
 }
 
+/**
+ * Implements hook_preprocess_node().
+ */
+function cuba_common_configuration_preprocess_node(&$variables) {
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getName();
+}
+
 /*
  * Implements hook_preprocess_html().
  */
