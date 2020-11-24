@@ -26,3 +26,10 @@ cuba_common_configuration.cuba_clone_conference_4:
     _title: 'Clone Conference - Choose Clone to Conference'
   requirements:
     _permission: 'clone cuba conferences'
+cuba_common_configuration.cuba_choose_speakers_order:
+  path: '/admin/choose-speakers-order'
+  defaults:
+    _form: '\Drupal\cuba_common_configuration\Form\CubaSpeakerOrderChooseForm'
+    _title: 'Choose Conference Speakers to order'
+  requirements:
+    _permission: 'create cuba_ct_speaker content'
