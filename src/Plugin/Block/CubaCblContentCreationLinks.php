@@ -96,6 +96,18 @@ class CubaCblContentCreationLinks extends BlockBase implements ContainerFactoryP
       ];
     }
 
+    // Check if user can create speaker.
+    if ($user->hasPermission('create cuba_ct_speaker content')) {
+
+      // Create link to main menu.
+      $link = 'https://' . \Drupal::request()->getHost() . Url::fromUri('internal:/node/add/cuba_ct_speaker')->toString();
+
+      $links[] = [
+        'link' => $link,
+        'title' => 'Add new speaker',
+      ];
+    }
+
     // Check if user can create clone conferences.
     if ($user->hasPermission('clone cuba conferences')) {
 
