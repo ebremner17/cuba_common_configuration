@@ -106,7 +106,9 @@ class CubaConferenceMenu extends BlockBase implements ContainerFactoryPluginInte
         $title = $tree->link->pluginDefinition['title'];
 
         // Set a link title to compare with the path.
-        $link_title = str_replace(' ', '-', $title);
+        $link_title = str_replace('.', '', $title);
+        $link_title = str_replace('\'', '', $link_title);
+        $link_title = str_replace(' ', '-', $link_title);
         $link_title = strtolower($link_title);
 
         // If now the link title is in the path array, we are in the active menu.
