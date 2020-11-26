@@ -10,7 +10,7 @@ dependencies:
   - ctools
   - cuba_ct_board_of_directors
   - cuba_ct_conference_section
-  - cuba_ct_speakers
+  - cuba_ct_speaker
   - cuba_ct_web_page
   - cuba_media
   - cuba_paragraphs
