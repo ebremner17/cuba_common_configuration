@@ -65,6 +65,13 @@ function cuba_common_configuration_preprocess_views_view_unformatted(&$variables
 }
 
 /**
+ * Implements hook_preprocess_views_view_field().
+ */
+function cuba_common_configuration_preprocess_views_view_fields(&$variables) {
+  $variables['language'] = \Drupal::languageManager()->getCurrentLanguage()->getName();
+}
+
+/**
  * Implements hook_preprocess_node().
  */
 function cuba_common_configuration_preprocess_node(&$variables) {
@@ -87,6 +94,10 @@ function cuba_common_configuration_preprocess_html(&$variables) {
 
     // Add extra class for styling.
     $variables['attributes']['class'][] = 'past-and-future';
+  }
+
+  if (\Drupal::service('router.admin_context')->isAdminRoute()) {
+    $variables['attributes']['class'][] = 'admin-page';
   }
 
   // If we are user 1, add the language class.
